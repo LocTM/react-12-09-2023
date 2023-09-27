@@ -12,7 +12,7 @@ export const AppPagination = ({
     return (
         <div>
             <AppButton 
-            color={pageIndex === 0 ?"gray": 'red'} 
+            className={pageIndex === 0 ?"bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded": 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'} 
             disabled={pageIndex === 0}
             onClick={() => setPageIndex(pageIndex - 1)}
             >
@@ -22,8 +22,8 @@ export const AppPagination = ({
                 Page {pageIndex + 1}/{totalPage}
             </span>
             <AppButton 
-            color={
-                pageIndex === lastPageIndex || lastPageIndex === - 1 ? "gray": 'blue'
+            className={
+                pageIndex === lastPageIndex || lastPageIndex === - 1 ? "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded": 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
             } 
             disabled={pageIndex === lastPageIndex || lastPageIndex === - 1}
             onClick={() => setPageIndex(pageIndex + 1)}
