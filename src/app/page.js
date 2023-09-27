@@ -11,7 +11,7 @@ export default function Home() {
   };
 
   return (
-    <div className=" bg-blue-800 min-h-screen flex items-center justify-center">
+    <div className=" bg-blue-800 min-h-screen flex justify-center">
       <div className="container mx-auto text-center">
         <h1 className="text-3xl font-bold text-black">Student Manager</h1>
         <div className="mt-8">
