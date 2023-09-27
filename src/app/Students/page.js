@@ -49,11 +49,11 @@ export default function Students() {
   };
 
   const confirmDelete = (student) => {
-    if (!window.confirm(`Are you sure you want to delete student  "${student.name}"`)){
+    if (!window.confirm(`Bạn chắc chắn muốn xóa?  "${student.name}"`)){
       return;
     }
     studentService.deleteStudent(student.id);
-    alert("Delete successfully");
+    alert("Xóa thành công");
     searchStudents();
   };
 

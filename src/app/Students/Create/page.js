@@ -26,10 +26,10 @@ export default function CreateNewStudent() {
         return;
       }
       await studentService.createStudent(student);
-      alert("Save success!");
+      alert("Đã có sinh viên mới!");
       router.push("/Students");
     } catch (e) {
-      alert("Error creating student");
+      alert("Có lỗi xảy ra");
       console.error(e);
     }
   };

@@ -30,10 +30,10 @@ export default function EditStudent({ params }) {
         return;
       }
       await studentService.updateStudent(student);
-      alert("Save success!");
+      alert("Thành công!");
       router.push("/Students");
     } catch (e) {
-      alert("Save Fail");
+      alert("Có lỗi xảy ra");
       console.error(e);
     }
   };
