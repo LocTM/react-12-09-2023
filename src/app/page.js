@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className=" bg-blue-800 min-h-screen flex justify-center">
       <div className="container mx-auto text-center">
-        <h1 className="text-3xl font-bold text-black">Student Manager</h1>
+        <h1 className="text-3xl font-bold text-white">Student Manager</h1>
         <div className="mt-8">
           <AppButton className=" mr-4  bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={goToStudentsPage}>
             Go to Students
