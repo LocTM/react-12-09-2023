@@ -10,6 +10,7 @@ export const AppPagination = ({
     const lastPageIndex = Math.ceil(total / itemsPerPage) - 1;
     const totalPage = lastPageIndex === - 1 ? 1 : lastPageIndex + 1;
     return (
+        <>
         <div>
             <AppButton 
             className={pageIndex === 0 ?"bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded": 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'} 
@@ -30,7 +31,11 @@ export const AppPagination = ({
             >
                 Next
             </AppButton>
-            <span>Total: {total} items</span>            
+                  
         </div>
-    );
+        <div>
+                <span>Total: {total} items</span>  
+        </div>
+        </>
+    );  
 };
