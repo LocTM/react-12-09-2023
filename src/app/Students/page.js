@@ -70,7 +70,7 @@ export default function Students() {
   }, [pagination.pageIndex]);
 
   return (
-    <div className=" bg-blue-800 min-h-screen min-w-screen flex items-center justify-center">
+    <div className=" mt-0 bg-blue-800 min-h-screen min-w-screen flex justify-center">
       <div className="container mx-auto text-center">
         <div className="text-2xl font-bold">Students</div>
         <AppButton className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={createNew}>
@@ -83,7 +83,7 @@ export default function Students() {
           <div>
             <input 
             name="searchTerm" 
-            className="border border-solid" 
+            className="border border-solid-300 px-3 py-2 rounded w-500 font-bold text-green-500" 
             value={filters.searchTerm} 
             onChange={(e) => {
               setFilters({
