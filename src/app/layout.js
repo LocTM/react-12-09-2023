@@ -1,6 +1,9 @@
-import Navigation from './Components/navigation'
+import Link from 'next/link';
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { AppProvider } from './Components/app-providers';
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,8 +16,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navigation className="bg-gray-500"></Navigation>
-        {children}</body>
+        <AppProvider>
+        <nav className="">
+          <div className="bg-blue-700 min-h-10  ">
+            <Link className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-1 text-center mr-2 mb-2' href='/'>
+              Home
+            </Link>
+            <span className='nx-4'></span>
+              <Link className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-1 text-center mr-2 mb-2' href='/Students'>
+                Students
+              </Link>
+          </div>
+        </nav>
+        {children}
+        </AppProvider>
+      </body>
     </html>
-  )
+  );
 }

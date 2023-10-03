@@ -1,13 +1,18 @@
 'use client';
 
+
+
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
+
+import { ThemeContext } from "../contexts/theme.context";
 import { AppButton } from "../Components/app-button";
+import { studentService } from "../services/student.services";
 import { AppPagination } from "../Components/app-pagination";
-import { studentService } from "../services/student.service";
 
 export default function Students() {
+  const theme = useContext(ThemeContext);
   const [searchResult, setSearchResult] = useState({
     data: [],
     total: 0,
@@ -47,11 +52,11 @@ export default function Students() {
   };
 
   const confirmDelete = (student) => {
-    if (!window.confirm(`Bạn chắc chắn muốn xóa?  "${student.name}"`)){
+    if (!window.confirm(`Are you sure you want to delete student  "${student.name}"`)){
       return;
     }
     studentService.deleteStudent(student.id);
-    alert("Xóa thành công");
+    alert("Delete successfully");
     searchStudents();
   };
 
@@ -68,20 +73,22 @@ export default function Students() {
   }, [pagination.pageIndex]);
 
   return (
-    <div className=" mt-0 bg-blue-800 min-h-screen min-w-screen flex justify-center">
-      <div className="container mx-auto text-center">
-        <div className="text-2xl font-bold">Students</div>
-        <AppButton className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={createNew}>
+    <>
+    <div className="bg-blue-700 min-h-screen">
+      <div className="container mx-auto text-center ">
+        <div>Theme: {theme}</div>
+        <div className="text-4xl font-bold">Students</div>
+        <AppButton className="mt-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={createNew}>
           Create new
         </AppButton>
         <div>
           <div>
-            <div className="text-lg font-bold">Search students</div>
+            <div className="mt-2 text-lg font-bold">Search students</div>
           </div>
           <div>
             <input 
             name="searchTerm" 
-            className="border border-solid-300 px-3 py-2 rounded w-500 font-bold text-green-500" 
+            className="border border-solid mt-2" 
             value={filters.searchTerm} 
             onChange={(e) => {
               setFilters({
@@ -92,7 +99,7 @@ export default function Students() {
           />
           </div> 
           <div className="mb-4">
-            <label className="">Gender</label>
+            <label className="block mt-2 text-8sm font-semibold">Gender</label>
             <div>
               <label htmlFor="rdAll" className="inline-block mr-2">
                 <input
@@ -149,21 +156,21 @@ export default function Students() {
           </div>       
           {searchResult.data
           .map((student) => (
-            <div key={student.id} className="border border-solid border-black p-2 mt-2">
+            <div key={student.id} className="border border-solid p-2 mt-2">
               <div>Name: {student.name}</div>
               <div>Age: {student.age}</div>
               <div>Gender: {getGender(student.gender)}</div>
               <div>
-                <AppButton className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"  color="red" onClick={() => confirmDelete(student)}>
+                <AppButton className="px-4 py-2 text-sm rounded-full cursor-pointer mr-4 bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-2 border-b-4 border-red-700 hover:border-red-500 rounded" onClick={() => confirmDelete(student)}>
                   Delete
                 </AppButton>
-                <AppButton  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => editStudent(student.id)}>
+                <AppButton className="px-4 py-2 text-sm rounded-full cursor-pointer mr-4 bg-green-500 hover:bg-green-400 text-white font-bold py-1 px-2 border-b-4 border-green-700 hover:border-green-500 rounded" onClick={() => editStudent(student.id)}>
                   Edit
                 </AppButton>                
               </div>
             </div>
           ))}
-          <AppPagination className=""
+          <AppPagination
             {...pagination} 
             total={searchResult.total} 
             setPageIndex={(newPageIndex) => {
@@ -177,5 +184,6 @@ export default function Students() {
         </div>
       </div>
     </div>
+    </>
   );
 }

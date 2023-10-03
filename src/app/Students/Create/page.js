@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { studentService } from "../../services/student.service";
+import { studentService } from "../../services/student.services";
 import { AppButton } from "../../Components/app-button";
 
 export default function CreateNewStudent() {
@@ -26,16 +27,16 @@ export default function CreateNewStudent() {
         return;
       }
       await studentService.createStudent(student);
-      alert("Đã có sinh viên mới!");
+      alert("Save success!");
       router.push("/Students");
     } catch (e) {
-      alert("Có lỗi xảy ra");
+      alert("Error creating student");
       console.error(e);
     }
   };
-
+  console.log("students", student, student.gender === "M");
   return (
-    <div className="bg-blue-800 p-4 min-h-screen">
+    <div className="bg-blue-700 min-h-screen">
       <div className="container mx-auto text-center">
         <h2 className="text-2xl font-bold mb-4">Create New Student</h2>
         <form onSubmit={onSubmit}>
@@ -62,7 +63,7 @@ export default function CreateNewStudent() {
               Age
             </label>
             <input
-               className="border border-solid-300 px-3 py-2 rounded w-500 font-bold text-black"
+              className="border border-solid-300 px-3 py-2 rounded w-500 font-bold text-black"
               id="age"
               name="age"
               type="number"
@@ -77,6 +78,7 @@ export default function CreateNewStudent() {
           </div>
           <div className="mb-4">
             <label className="inline-block w-20">Gender</label>
+            
               <label htmlFor="rdMale" className="inline-block mr-2">
                 <input
                   id="rdMale"
@@ -111,9 +113,8 @@ export default function CreateNewStudent() {
                 />
                 Female
               </label>
-          
           </div>
-          <AppButton type="submit" className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500  rounded">
+          <AppButton type="submit" className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
             Save
           </AppButton>
         </form>

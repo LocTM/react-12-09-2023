@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppButton } from "../../Components/app-button";
-import { studentService } from "../../services/student.service";
+import { studentService } from "../../services/student.services";
 
 export default function EditStudent({ params }) {
   console.log(params.id);
@@ -30,10 +30,10 @@ export default function EditStudent({ params }) {
         return;
       }
       await studentService.updateStudent(student);
-      alert("Thành công!");
+      alert("Save success!");
       router.push("/Students");
     } catch (e) {
-      alert("Có lỗi xảy ra");
+      alert("Save Fail");
       console.error(e);
     }
   };
@@ -54,9 +54,9 @@ export default function EditStudent({ params }) {
     return <div></div>;
   }
   return (
-    <div className="bg-blue-800 p-4 min-h-screen">
+    <div className="bg-blue-700 min-h-screen">
       <div className="container mx-auto text-center">
-        <h2 className="text-2xl font-bold mb-4">Edit Student</h2>
+        <h2 className="text-4xl font-bold mb-4">Edit Student</h2>
         <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label htmlFor="id" className="inline-block w-20">
@@ -145,7 +145,7 @@ export default function EditStudent({ params }) {
                 Female
               </label>
           </div>
-          <AppButton className=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="submit">
+          <AppButton type="submit" className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
             Save
           </AppButton>
         </form>
