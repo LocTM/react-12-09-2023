@@ -54,7 +54,7 @@ export default function EditStudent({ params }) {
     return <div></div>;
   }
   return (
-    <div className="bg-blue-700 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4">Edit Student</h2>
         <form onSubmit={onSubmit}>

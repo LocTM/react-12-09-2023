@@ -74,7 +74,7 @@ export default function Students() {
 
   return (
     <>
-    <div className="bg-blue-700 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500">
       <div className="container mx-auto text-center ">
         <div>Theme: {theme}</div>
         <div className="text-4xl font-bold">Students</div>

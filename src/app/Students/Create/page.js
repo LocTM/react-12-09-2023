@@ -36,7 +36,7 @@ export default function CreateNewStudent() {
   };
   console.log("students", student, student.gender === "M");
   return (
-    <div className="bg-blue-700 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500">
       <div className="container mx-auto text-center">
         <h2 className="text-2xl font-bold mb-4">Create New Student</h2>
         <form onSubmit={onSubmit}>

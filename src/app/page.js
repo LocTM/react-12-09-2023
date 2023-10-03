@@ -24,7 +24,7 @@ export default function Home() {
     signOut(auth);
   };  
   return (
-    <main className="bg-blue-700 min-h-screen">
+    <main className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 ">
       <div className="container mx-auto text-center">
         <h1 className="text-4xl font-bold">Students manager</h1>
         
